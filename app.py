@@ -40,24 +40,32 @@ class ItemSchema(ma.Schema):
 item_schema = ItemSchema(strict=True)
 items_schema = ItemSchema(many=True, strict=True)
 
-# POST /api/items
-@app.route('/api/items', methods=['POST'])
-def add_item():
-  name = request.json['name']
-  qty = request.json['qty']
-  measurement = request.json['measurement']
-
-  new_item = Item(name, qty, measurement)
-
-  db.session.add(new_item)
-  db.session.commit()
-
-  return item_schema.jsonify(new_item)
-
 # GET /
 @app.route('/')
 def index():
   return 'Hey, There!'
+
+# POST & GET /api/items
+@app.route('/api/items', methods=['POST', 'GET'])
+def add_item():
+  if request.method == 'POST':
+
+    name = request.json['name']
+    qty = request.json['qty']
+    measurement = request.json['measurement']
+    new_item = Item(name, qty, measurement)
+
+    try:
+      db.session.add(new_item)
+      db.session.commit()
+      return item_schema.jsonify(new_item)
+    except: 'There was a problem adding your item'
+
+  else:
+    all_items = Item.query.all()
+    result = items_schema.dump(all_items)
+    return jsonify(result.data)
+
 
 # Run Server
 if __name__ == '__main__':

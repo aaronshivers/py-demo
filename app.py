@@ -30,7 +30,11 @@ class List(db.Model):
     self.qty = qty
     self.measurement = measurement
 
-
+# List Schema
+class ListSchema(ma.Schema):
+  class Meta:
+    # Fields to Expose
+    fields = ('id', 'name', 'qty', 'measurement')
 
 
 # GET /

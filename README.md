@@ -7,6 +7,11 @@
 git clone git@github.com:aaronshivers/py_demo.git
 ```
 
+### Move into the Project Directory
+```
+cd py_demo
+```
+
 ### Install pipenv
 ```
 sudo apt install pipenv

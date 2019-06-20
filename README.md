@@ -2,6 +2,11 @@
 
 ## Setup
 
+## Clone Repository
+```
+git clone git@github.com:aaronshivers/py_demo.git
+```
+
 ### Install pipenv
 ```
 sudo apt install pipenv

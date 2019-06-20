@@ -2,7 +2,7 @@
 
 ## Setup
 
-## Clone Repository
+### Clone Repository
 ```
 git clone git@github.com:aaronshivers/py_demo.git
 ```

@@ -19,7 +19,7 @@ pipenv install
 
 ### Create Database
 ```
-python
+python3
 from app import db
 db.create_all()
 exit()
@@ -27,5 +27,5 @@ exit()
 
 ### Run Server - http://localhost:5000
 ```
-python app.py
+python3 app.py
 ```

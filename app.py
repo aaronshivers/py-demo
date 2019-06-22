@@ -47,7 +47,7 @@ def index():
 
 # POST & GET /api/items
 @app.route('/api/items', methods=['POST', 'GET'])
-def add_item():
+def items():
   if request.method == 'POST':
 
     name = request.json['name']
@@ -66,6 +66,26 @@ def add_item():
     result = items_schema.dump(all_items)
     return jsonify(result.data)
 
+# GET /items/<id>
+@app.route('/api/items/<id>', methods=['GET', 'PUT', 'DELETE'])
+def items_by_id(id):
+  item = Item.query.get(id)
+
+  if request.method == 'DELETE':
+    db.session.delete(item)
+    db.session.commit()
+  elif request.method == 'PUT':
+    name = request.json['name']
+    qty = request.json['qty']
+    measurement = request.json['measurement']
+
+    item.name = name
+    item.qty = qty
+    item.measurement = measurement
+
+    db.session.commit()
+  
+  return item_schema.jsonify(item)
 
 # Run Server
 if __name__ == '__main__':

@@ -8,9 +8,9 @@ Flask = "*"
 Flask-SQLAlchemy = "*"
 flask-marshmallow = "*"
 marshmallow-sqlalchemy = "*"
-gunicorn = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.7"
+gunicorn = "19.9.0"

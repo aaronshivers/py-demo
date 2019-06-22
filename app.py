@@ -72,8 +72,11 @@ def items_by_id(id):
   item = Item.query.get(id)
 
   if request.method == 'DELETE':
-    db.session.delete(item)
-    db.session.commit()
+    try:
+      db.session.delete(item)
+      db.session.commit()
+    except: 'Sorry, we could not delete the item.'
+
   elif request.method == 'PUT':
     name = request.json['name']
     qty = request.json['qty']
@@ -83,7 +86,10 @@ def items_by_id(id):
     item.qty = qty
     item.measurement = measurement
 
-    db.session.commit()
+    try:
+      db.session.commit()
+    except:
+      return 'Sorry, we could not update the item.'
   
   return item_schema.jsonify(item)
 

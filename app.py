@@ -2,15 +2,12 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-import os
 
 # Intitialize Application
 app = Flask(__name__)
-basedir = os.path.abspath(os.path.dirname(__file__))
 
 # Configure Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize Database
@@ -96,5 +93,4 @@ def items_by_id(id):
 
 # Run Server
 if __name__ == '__main__':
-  db.create_all()
   app.run(debug=True)

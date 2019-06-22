@@ -4,12 +4,12 @@
 
 ### Clone Repository
 ```
-git clone git@github.com:aaronshivers/py_demo.git
+git clone git@github.com:aaronshivers/py-demo.git
 ```
 
 ### Move into the Project Directory
 ```
-cd py_demo
+cd py-demo
 ```
 
 

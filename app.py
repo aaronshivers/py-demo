@@ -1,5 +1,6 @@
 # Import Dependencies
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 import os
@@ -7,6 +8,9 @@ import os
 # Intitialize Application
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
+
+# Setup CORS
+CORS(app)
 
 # Configure Database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite')

@@ -12,14 +12,15 @@ git clone git@github.com:aaronshivers/py_demo.git
 cd py_demo
 ```
 
-### Install pipenv
-```
-sudo apt install pipenv
-```
 
 ### Start Virtual Environment
 ```
 pipenv shell
+```
+
+### Install pipenv
+```
+sudo apt install pipenv
 ```
 
 ### Install Dependencies
